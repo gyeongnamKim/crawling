@@ -1,3 +1,4 @@
+import pandas as pd
 import urllib.request as req    # url 주소 열어주는 함수
 from bs4 import BeautifulSoup as BS # HTML파일 태그 검색
 #데이터를 담을 리딕셔너리형 리스트 초기화
@@ -24,3 +25,7 @@ for i in range(len(movie_review['영화제목'])):
     print('영화 별점 :',movie_review['별점'][i])
     print('영화 리뷰 :',movie_review['감상평'][i])
     print('-'*70)
+
+#csv 형태로 저장
+movie_review = pd.DataFrame(movie_review)
+movie_review.to_csv('./movie_review_result.csv')
